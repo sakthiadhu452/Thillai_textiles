@@ -203,3 +203,38 @@
         width: 50px;
     }
 }
+/* Navbar.css */
+
+/* Add a new font to the links */
+.Nav-Links .Nav-li {
+    position: relative;
+    margin: 0px 10px;
+    list-style: none;
+    font-weight: 600; /* Adjust weight for better visibility */
+    cursor: pointer;
+    font-family: 'Lora', serif; /* Example of a stylish font */
+    text-decoration: none;
+    font-size: 1.6rem; /* Adjust font size as needed */
+    color: #224F34;
+    transition: color 0.3s ease, transform 0.3s ease; /* Add transitions for color and transform */
+}
+
+.Nav-Links .Nav-li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px; /* Adjust the height of the underline */
+    width: 0;
+    background-color: #224F34; /* Underline color */
+    transition: width 0.3s ease;
+}
+
+.Nav-Links .Nav-li:hover::after {
+    width: 100%;
+}
+
+.Nav-Links .Nav-li:hover {
+    color: #306F4A; /* Change color on hover */
+    transform: scale(1.1); /* Slightly scale up on hover */
+}

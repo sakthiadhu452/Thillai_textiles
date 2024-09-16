@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/Logo.png';
-import Carticon from '../../assets/Cart.png';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -28,10 +27,9 @@ const Navbar = () => {
       </div>
       
       <span className={`Nav-Links ${isActive ? 'active' : ''}`}>
-        <li to="/" className='Nav-li' style={{ fontWeight: 'bold' }}>Home</li>
-        <li to="/about" className='Nav-li'>About</li>
-        <li to="/contact" className='Nav-li'>Contact Us</li>
-        <button className='Nav-LoginBtn'>Login</button>
+        <Link to="/" className='Nav-li' style={{ fontWeight: 'bold' }}>Home</Link>
+        <Link to="/about" className='Nav-li'>About</Link>
+        <Link to="/products" className='Nav-li'>Our Products</Link>
       </span>
     </div>
   );
