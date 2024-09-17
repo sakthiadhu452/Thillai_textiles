@@ -1,35 +1,40 @@
-import React from "react";
-import './OurProducts.css'
-import Product_Image from '../../assets/Product_Image.png'
+import React, { useState, useEffect } from "react";
+import './OurProducts.css';
+import Product_Image from '../../assets/Product_Image.png';
+import banarsi from '../../assets/banarsi saree.jpg'
+import design from '../../assets/designer saree.jpg'
+import cherfon from '../../assets/cherfon.jpg'
+import kanji from '../../assets/kanjiveram saree.jpg'
+import verget from '../../assets/verget.jpg'
+import wast from '../../assets/wastern.jpg'
+import cotton from '../../assets/cotton saree.jpg'
 
 const products = [
-  {
-    name: "Designer Saree",
-    price: "Rs.1000",
-    rating: "5.0",
-    image: Product_Image, // Replace with the actual image source
-  },
-  {
-    name: "Cotton Saree",
-    price: "Rs.999",
-    rating: "4.9",
-    image: Product_Image, // Replace with the actual image source
-  },
-  {
-    name: "Western Saree",
-    price: "Rs.899",
-    rating: "4.8",
-    image: Product_Image, // Replace with the actual image source
-  },
-  {
-    name: "Silk Saree",
-    price: "Rs.799",
-    rating: "4.7",
-    image: Product_Image, // Replace with the actual image source
-  },
+  { name: "Designer Saree", price: "Rs.1000", rating: "5.0", image: Product_Image },
+  { name: "Cotton Saree", price: "Rs.999", rating: "4.9", image: design },
+  { name: "Western Saree", price: "Rs.899", rating: "4.8", image: wast },
+  { name: "Silk Saree", price: "Rs.799", rating: "4.7", image: cotton },
+  { name: "Banarasi Saree", price: "Rs.1200", rating: "4.9", image: banarsi },
+  { name: "Kanjeevaram Saree", price: "Rs.1500", rating: "4.6", image: kanji },
+  { name: "Georgette Saree", price: "Rs.1100", rating: "4.8", image: verget },
+  { name: "Chiffon Saree", price: "Rs.1300", rating: "4.5", image: cherfon }
 ];
 
 function OurProducts() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const totalProducts = products.length;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 4) % totalProducts);
+    }, 2000); // Slide every 2 seconds
+    return () => clearInterval(interval);
+  }, [totalProducts]);
+
+  const visibleProducts = products.slice(currentIndex, currentIndex + 4).concat(
+    products.slice(0, Math.max(0, (currentIndex + 4) - totalProducts))
+  );
+
   return (
     <div className="OurProduct-Main">
       <header>
@@ -42,20 +47,22 @@ function OurProducts() {
         </nav>
       </header>
 
-      <div className="products-grid">
-        {products.map((product, index) => (
-          <div className="product-card" key={index}>
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <div className="product-details">
-              <p>{product.price}</p>
-              <div className="product-details-line"></div>
-              <div className="rating">
-                {product.rating} <span>⭐</span>
+      <div className="products-carousel">
+        <div className="products-grid">
+          {visibleProducts.map((product, index) => (
+            <div className="product-card" key={index}>
+              <img src={product.image} alt={product.name} />
+              <h3 className="product-name">{product.name}</h3>
+              <div className="product-details">
+                <p>{product.price}</p>
+                <div className="product-details-line"></div>
+                <div className="rating">
+                  {product.rating} <span>⭐</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

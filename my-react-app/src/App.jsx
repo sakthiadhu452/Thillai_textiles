@@ -18,11 +18,11 @@ function App() {
 
   return (
     <>
-      <Navbar
+    <Navbar
         onNavigateHome={() => scrollToSection(homeRef)}
         onNavigateContact={() => scrollToSection(contactusRef)}
         onNavigateAbout={() => scrollToSection(aboutRef)}
-        onNavigateProducts={() => scrollToSection(productsRef)} // Add navigation for OurProducts
+        onNavigateProducts={() => scrollToSection(productsRef)}
       />
 
       <div ref={homeRef}>
@@ -31,11 +31,11 @@ function App() {
       <div ref={productsRef}> {/* Ref for OurProducts */}
         <OurProducts />
       </div>
-      <div ref={contactusRef}>
-        <Contactus />
-      </div>
       <div ref={aboutRef}>
         <About />
+      </div>
+      <div ref={contactusRef}>
+        <Contactus />
       </div>
     </>
   );

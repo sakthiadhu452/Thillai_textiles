@@ -1,3 +1,7 @@
+.no-scroll {
+    overflow: hidden;
+  }
+
 .Navbar-Main {
     margin: 13px 5%;
     display: flex;
@@ -156,7 +160,7 @@
     }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 1000px) {
     .Nav-Links {
         display: none;
         flex-direction: column;
@@ -171,6 +175,9 @@
         opacity: 0;
         z-index: 1;
         transition: opacity 0.5s ease;
+    }
+    .Nav-li{
+        margin-top: 30px !important;
     }
 
     .Nav-HandBurger {
